@@ -415,7 +415,7 @@ def runsim(n_step=7000,
     cl_rs = 'slategray'
 
     # Style plots
-    plt.style.use('seaborn-pastel')
+    plt.style.use('seaborn-v0_8-pastel')
     mpl.rcParams['lines.linewidth'] = 4
     mpl.rcParams['ytick.labelsize'] = 20
     mpl.rcParams['xtick.labelsize'] = 20    
@@ -784,20 +784,20 @@ if __name__ == "__main__":
     n_step = 1500               # Simulation length
     dt_gp = 0.005               # Time constant GP
     dt_gm = 1                   # Time constant GM (= GP)
+    rng = 100                   # rng seed
+    n_run = 50                  # number or simulation runs
+    plotfig = True              # if False: save figures
+
+    # Parameters for behaviour and cerebellar state estimation 
     dw = 0                      # Noise gp dynamics
     # dw = 6                      # Noise gp dynamics
     ω_offset = np.array([.1, .1]) * 2 * np.pi  # Offset angular frequency respiration
     # ω_offset = np.array([.0, .0])  # Offset angular frequency respiration
-    # perturb = True              # whether or not perturb oscillator phase
-    perturb = False              # whether or not perturb oscillator phase
+    perturb = True              # whether or not perturb oscillator phase
+    # perturb = False              # whether or not perturb oscillator phase
     expect_sync = True       # Control expectations in pp connectivity
-    # expect_sync = False       # Control expectations in pp connectivity
-    # action = True             # Action
-    action = False             # Action
-    rng = 100                    # rng seed
+    action = True             # Action
     obs_noise = False        # no observation noise
-    plotfig = True              # if False: save figures
-    n_run = 50
 
     # Run simulations
     runsim(n_step=n_step, dt_gp=dt_gp, dt_gm=dt_gm, dw=dw, ω_offset=ω_offset, perturb=perturb, expect_sync=expect_sync, action=action, n_run=n_run, rng=rng, obs_noise=obs_noise, plotfig=plotfig)
